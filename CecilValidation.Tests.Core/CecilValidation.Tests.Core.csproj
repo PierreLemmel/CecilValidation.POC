@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>CecilValidation.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CecilValidation.ExpectedSamples.NotNullParameter\CecilValidation.ExpectedSamples.NotNullParameter.csproj" />
+    <ProjectReference Include="..\CecilValidation.TestedSample.NotNullParameter\CecilValidation.TestedSamples.NotNullParameter.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="NFluent" Version="2.4.0" />
+    <PackageReference Include="NUnit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.11.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CecilValidation.Tests.Core\CecilValidation.Tests.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ILSamples\Expected\FluidImprov.Audio.il">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ILSamples\ILSpyGenerated\FluidImprov.Audio.il">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SomeDlls\FluidImprov.Audio.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="cd $(TargetDir)&#xD;&#xA;mkdir ilspycmd&#xD;&#xA;xcopy $(SolutionDir)\Tools\ilspycmd $(TargetDir)\ilspycmd /d /e" />
+  </Target>
+
+</Project>

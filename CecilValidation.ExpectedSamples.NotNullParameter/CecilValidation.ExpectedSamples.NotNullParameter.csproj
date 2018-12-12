@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>CecilValidation.Samples.NotNullParameter</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CecilValidation.Core\CecilValidation.Core.csproj" />
+    <ProjectReference Include="..\CecilValidation.TestedSamples.Core\CecilValidation.Samples.Core.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="cd $(SolutionDir)SampleAssemblies\Expected&#xD;&#xA;mkdir NotNullParameter&#xD;&#xA;copy $(TargetPath) $(SolutionDir)SampleAssemblies\Expected\NotNullParameter /d" />
+  </Target>
+
+</Project>
